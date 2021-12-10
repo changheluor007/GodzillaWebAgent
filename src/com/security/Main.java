@@ -53,18 +53,14 @@ public class Main {
             tmpString=cs.getProtectionDomain().getCodeSource().getLocation().getFile();
             if (tmpString.endsWith(".jar")) {
                 try {
-                    fileString=URLDecoder.decode(tmpString,"utf-8");
+                    fileString= URLDecoder.decode(tmpString,"utf-8");
                 } catch (UnsupportedEncodingException e) {
-                    fileString= URLDecoder.decode(tmpString);
+                    fileString=URLDecoder.decode(tmpString);
                 }
             }
         }
-        if (fileString!=null){
-            if (fileString.indexOf(":")!=0&&fileString.startsWith("/")){
-                fileString=fileString.substring(1);
-            }
-        }
-        return fileString;
+
+        return new File(fileString).toString();
     }
 
     public static void main(String[] args)throws Exception {
